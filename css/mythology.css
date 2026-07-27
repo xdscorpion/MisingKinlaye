@@ -1,0 +1,1003 @@
+/* ==========================================
+   MisingKinlaye — Mythology
+   Page-specific styles. Linked after style.css
+   so it can use --red / --black / --white / --grey
+   / --light / --shadow from variables.css, and
+   layer its own tokens on top for this section
+   only.
+========================================== */
+
+.myth-section{
+
+    --myth-void:#08080b;
+    --myth-panel:#111114;
+    --myth-panel-line:rgba(255,255,255,.08);
+    --myth-gold:#c9a46b;
+    --myth-text:#eeece6;
+    --myth-text-dim:#a7a49c;
+    --myth-thread:rgba(201,164,107,.4);
+
+    position:relative;
+
+    background:var(--myth-void);
+    color:var(--myth-text);
+
+    padding:140px 0 160px;
+    overflow:hidden;
+
+}
+
+.myth-section .container{
+
+    position:relative;
+    z-index:2;
+
+}
+
+/* Ambient starlight, sits behind everything in the section */
+
+.myth-sky{
+
+    position:absolute;
+    inset:0;
+    z-index:0;
+
+    background:
+        radial-gradient(1px 1px at 8% 22%, rgba(255,255,255,.5) 0, transparent 60%),
+        radial-gradient(1px 1px at 22% 68%, rgba(255,255,255,.35) 0, transparent 60%),
+        radial-gradient(1.5px 1.5px at 38% 12%, rgba(255,255,255,.4) 0, transparent 60%),
+        radial-gradient(1px 1px at 52% 78%, rgba(255,255,255,.3) 0, transparent 60%),
+        radial-gradient(1.5px 1.5px at 66% 35%, rgba(255,255,255,.45) 0, transparent 60%),
+        radial-gradient(1px 1px at 78% 58%, rgba(255,255,255,.3) 0, transparent 60%),
+        radial-gradient(1px 1px at 90% 20%, rgba(255,255,255,.4) 0, transparent 60%),
+        radial-gradient(1.5px 1.5px at 95% 82%, rgba(255,255,255,.3) 0, transparent 60%),
+        radial-gradient(ellipse at 50% 0%, rgba(201,164,107,.06), transparent 55%);
+
+    opacity:.8;
+
+}
+
+.myth-sky::after{
+
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:radial-gradient(ellipse at 50% 50%, transparent 40%, var(--myth-void) 92%);
+
+}
+
+/* ===============================
+   Intro
+=============================== */
+
+.myth-intro{
+
+    max-width:760px;
+    margin:0 auto 150px;
+    text-align:center;
+
+}
+
+.myth-eyebrow{
+
+    display:inline-block;
+    font-size:12px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--myth-gold);
+    margin-bottom:22px;
+
+}
+
+.myth-intro h2{
+
+    font-family:'Playfair Display',serif;
+    font-size:46px;
+    line-height:1.2;
+    color:var(--myth-text);
+    margin-bottom:28px;
+
+}
+
+.myth-intro p{
+
+    font-size:18px;
+    line-height:1.9;
+    color:var(--myth-text-dim);
+
+}
+
+/* Shared scroll-reveal (paired with mythology.js) */
+
+.myth-reveal{
+
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity 1s ease, transform 1s ease;
+
+}
+
+.myth-reveal.myth-show{
+
+    opacity:1;
+    transform:translateY(0);
+
+}
+
+/* ===============================
+   Timeline — horizontal filmstrip
+   on desktop, vertical stack below
+   the breakpoint
+=============================== */
+
+.myth-timeline-wrap{
+
+    position:relative;
+    margin-bottom:70px;
+
+    padding-bottom:26px;
+
+    overflow-x:auto;
+    overflow-y:hidden;
+
+    scrollbar-width:thin;
+    scrollbar-color:var(--myth-thread) transparent;
+
+    -webkit-overflow-scrolling:touch;
+
+}
+
+.myth-timeline-wrap::-webkit-scrollbar{
+
+    height:5px;
+
+}
+
+.myth-timeline-wrap::-webkit-scrollbar-thumb{
+
+    background:var(--myth-thread);
+    border-radius:99px;
+
+}
+
+.myth-timeline{
+
+    position:relative;
+
+    display:inline-flex;
+    align-items:center;
+
+    gap:56px;
+
+    padding:40px 60px;
+
+    min-width:100%;
+
+}
+
+/* the connecting thread running through every node */
+
+.myth-thread-line{
+
+    position:absolute;
+    left:0;
+    right:0;
+    top:50%;
+
+    height:1px;
+
+    background:linear-gradient(90deg,
+        transparent 0%,
+        var(--myth-thread) 6%,
+        var(--myth-thread) 94%,
+        transparent 100%);
+
+    transform:translateY(-1px);
+
+    z-index:0;
+
+}
+
+.myth-node{
+
+    position:relative;
+    z-index:1;
+
+    flex:0 0 auto;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+
+    width:120px;
+
+}
+
+.myth-dot{
+
+    width:10px;
+    height:10px;
+    border-radius:50%;
+
+    background:#2a2a30;
+    border:1px solid var(--myth-panel-line);
+
+    margin-bottom:16px;
+
+    transition:background .6s ease, box-shadow .6s ease, transform .6s ease;
+
+}
+
+.myth-node.myth-lit .myth-dot{
+
+    background:var(--myth-gold);
+    box-shadow:0 0 16px 3px rgba(201,164,107,.55);
+    transform:scale(1.2);
+
+}
+
+.myth-node-name{
+
+    font-family:'Playfair Display',serif;
+    font-size:15px;
+    letter-spacing:.06em;
+    color:var(--myth-text-dim);
+
+    transition:color .6s ease;
+
+}
+
+.myth-node.myth-lit .myth-node-name{
+
+    color:var(--myth-text);
+
+}
+
+/* ===============================
+   Feature nodes (Kéyum, Yumkang,
+   Ka:si, Mukseng, Sedí, Pédong)
+=============================== */
+
+.myth-node--feature{
+
+    width:280px;
+
+}
+
+.myth-card{
+
+    width:100%;
+
+    background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.015));
+    border:1px solid var(--myth-panel-line);
+    border-radius:18px;
+
+    padding:26px 22px 30px;
+
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+
+    box-shadow:0 30px 60px -30px rgba(0,0,0,.7);
+
+    transition:transform .5s ease, border-color .5s ease, box-shadow .5s ease;
+
+}
+
+.myth-card:hover{
+
+    transform:translateY(-6px);
+    border-color:rgba(201,164,107,.4);
+
+}
+
+.myth-figure{
+
+    position:relative;
+
+    width:100%;
+    aspect-ratio:1/1;
+
+    border-radius:14px;
+    overflow:hidden;
+
+    margin-bottom:20px;
+
+    background:#000;
+
+}
+
+.myth-figure img{
+
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+    display:block;
+
+}
+
+.myth-card h3{
+
+    font-family:'Playfair Display',serif;
+    font-size:22px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+
+    margin-bottom:6px;
+
+}
+
+.myth-card .myth-tag{
+
+    display:inline-block;
+
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+
+    color:var(--myth-gold);
+
+    margin-bottom:14px;
+
+}
+
+.myth-card p{
+
+    font-size:15px;
+    line-height:1.8;
+    color:var(--myth-text-dim);
+
+}
+
+/* --- Kéyum: slow breathing void --- */
+
+.myth-figure--keyum img{
+
+    animation:mythBreathe 7s ease-in-out infinite;
+
+}
+
+@keyframes mythBreathe{
+
+    0%,100%{ opacity:.72; transform:scale(1); }
+    50%{ opacity:1; transform:scale(1.035); }
+
+}
+
+/* --- Yumkang: ripple / oscillation --- */
+
+.myth-figure--yumkang{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+}
+
+.myth-figure--yumkang img{
+
+    animation:mythOscillate 6s ease-in-out infinite;
+
+}
+
+@keyframes mythOscillate{
+
+    0%,100%{ transform:scale(1) rotate(0deg); }
+    50%{ transform:scale(1.05) rotate(1.2deg); }
+
+}
+
+.myth-figure--yumkang::after{
+
+    content:"";
+    position:absolute;
+    inset:0;
+
+    border-radius:50%;
+    border:1px solid rgba(201,164,107,.5);
+
+    animation:mythRipple 3.2s ease-out infinite;
+
+}
+
+@keyframes mythRipple{
+
+    0%{ transform:scale(.7); opacity:.8; }
+    100%{ transform:scale(1.25); opacity:0; }
+
+}
+
+/* --- Ka:si: pulsing rings / expanding glow --- */
+
+.myth-figure--kasi img{
+
+    animation:mythGlowPulse 5s ease-in-out infinite;
+
+}
+
+@keyframes mythGlowPulse{
+
+    0%,100%{ filter:brightness(1) saturate(1); }
+    50%{ filter:brightness(1.25) saturate(1.15); }
+
+}
+
+.myth-figure--kasi::before,
+.myth-figure--kasi::after{
+
+    content:"";
+    position:absolute;
+    inset:0;
+
+    border-radius:50%;
+    border:1px solid rgba(201,164,107,.35);
+
+    animation:mythRing 4s ease-out infinite;
+
+}
+
+.myth-figure--kasi::after{
+
+    animation-delay:2s;
+
+}
+
+@keyframes mythRing{
+
+    0%{ transform:scale(.6); opacity:.9; }
+    100%{ transform:scale(1.35); opacity:0; }
+
+}
+
+/* --- Mukseng: flickering between seen / unseen --- */
+
+.myth-figure--mukseng img{
+
+    animation:mythFlicker 4.5s ease-in-out infinite;
+
+}
+
+@keyframes mythFlicker{
+
+    0%,100%{ opacity:1; }
+    38%{ opacity:1; }
+    45%{ opacity:.15; }
+    52%{ opacity:1; }
+    76%{ opacity:.4; }
+    82%{ opacity:1; }
+
+}
+
+/* ===============================
+   Highlighted nodes: red ambient
+   glow + soft pulse + scale
+=============================== */
+
+.myth-highlight{
+
+    position:relative;
+
+}
+
+.myth-highlight .myth-card{
+
+    border-color:rgba(192,57,43,.35);
+    box-shadow:0 0 0 rgba(192,57,43,0);
+
+    animation:mythHighlightPulse 3.6s ease-in-out infinite;
+
+}
+
+@keyframes mythHighlightPulse{
+
+    0%,100%{
+
+        box-shadow:0 30px 60px -30px rgba(0,0,0,.7), 0 0 0 rgba(192,57,43,0);
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        box-shadow:0 30px 60px -30px rgba(0,0,0,.7), 0 0 34px 4px rgba(192,57,43,.28);
+        transform:scale(1.015);
+
+    }
+
+}
+
+.myth-highlight .myth-dot{
+
+    background:var(--red);
+    box-shadow:0 0 16px 3px rgba(192,57,43,.55);
+
+}
+
+/* ===============================
+   Sedí — side branch with Melo
+=============================== */
+
+.myth-sedi-pair{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+
+    margin-bottom:16px;
+
+}
+
+.myth-sedi-pair span{
+
+    font-family:'Playfair Display',serif;
+    font-size:17px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+
+}
+
+.myth-sedi-pair span:first-child{ color:var(--red); }
+.myth-sedi-pair span:last-child{ color:var(--myth-gold); }
+
+.myth-sedi-line{
+
+    position:relative;
+
+    width:44px;
+    height:1px;
+
+    background:linear-gradient(90deg, var(--red), var(--myth-gold));
+
+    overflow:visible;
+
+}
+
+.myth-sedi-line::before{
+
+    content:"";
+    position:absolute;
+    top:50%;
+    left:0;
+
+    width:5px;
+    height:5px;
+    border-radius:50%;
+
+    background:var(--myth-gold);
+
+    transform:translate(-50%,-50%);
+
+    animation:mythSediParticle 2.4s linear infinite;
+
+}
+
+@keyframes mythSediParticle{
+
+    0%{ left:0; opacity:0; }
+    15%{ opacity:1; }
+    85%{ opacity:1; }
+    100%{ left:100%; opacity:0; }
+
+}
+
+/* ===============================
+   Pédong — rain + mist
+=============================== */
+
+.myth-node--pedong{
+
+    width:300px;
+
+}
+
+.myth-rain{
+
+    position:relative;
+
+    width:100%;
+    height:150px;
+
+    border-radius:14px;
+    overflow:hidden;
+
+    margin-bottom:20px;
+
+    background:linear-gradient(180deg,#151519,#0b0b0e);
+
+}
+
+.myth-rain span{
+
+    position:absolute;
+    top:-20%;
+
+    width:1px;
+    height:22px;
+
+    background:linear-gradient(180deg, transparent, rgba(201,164,107,.55));
+
+    animation:mythFall linear infinite;
+
+}
+
+@keyframes mythFall{
+
+    to{ transform:translateY(180px); }
+
+}
+
+.myth-mist{
+
+    position:absolute;
+    inset:0;
+
+    background:radial-gradient(ellipse at 50% 100%, rgba(255,255,255,.08), transparent 70%);
+
+    animation:mythMistDrift 8s ease-in-out infinite;
+
+}
+
+@keyframes mythMistDrift{
+
+    0%,100%{ opacity:.5; transform:translateX(0); }
+    50%{ opacity:.9; transform:translateX(10px); }
+
+}
+
+/* ===============================
+   Fork after Pédong
+=============================== */
+
+.myth-fork{
+
+    display:block;
+    width:100%;
+    max-width:420px;
+    height:70px;
+
+    margin:0 auto -6px;
+
+}
+
+.myth-fork path{
+
+    fill:none;
+    stroke:var(--myth-thread);
+    stroke-width:1;
+
+}
+
+.myth-branches{
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+
+    max-width:820px;
+    margin:0 auto;
+
+}
+
+/* ===============================
+   Do:nyi – Po:lo
+=============================== */
+
+.myth-celestial{
+
+    position:relative;
+
+    width:120px;
+    height:120px;
+
+    margin:0 auto 22px;
+
+}
+
+.myth-celestial .ring{
+
+    position:absolute;
+    inset:0;
+
+    border-radius:50%;
+    border:1px dashed rgba(201,164,107,.4);
+
+    animation:mythSpin 26s linear infinite;
+
+}
+
+.myth-celestial .ring--inner{
+
+    inset:18px;
+
+    border-style:solid;
+    border-color:rgba(192,57,43,.35);
+
+    animation-duration:16s;
+    animation-direction:reverse;
+
+}
+
+.myth-celestial .sun,
+.myth-celestial .moon{
+
+    position:absolute;
+    top:50%;
+    left:50%;
+
+    width:34px;
+    height:34px;
+    border-radius:50%;
+
+    transform:translate(-50%,-50%);
+
+}
+
+.myth-celestial .sun{
+
+    background:radial-gradient(circle at 35% 35%, #fff, var(--myth-gold) 70%);
+    box-shadow:0 0 26px 6px rgba(201,164,107,.5);
+
+    animation:mythSunPulse 5s ease-in-out infinite;
+
+}
+
+.myth-celestial .moon{
+
+    width:14px;
+    height:14px;
+
+    left:78%;
+    top:22%;
+
+    background:#d9d6ce;
+    box-shadow:0 0 12px 3px rgba(217,214,206,.4);
+
+    animation:mythOrbit 12s linear infinite;
+
+}
+
+@keyframes mythSpin{
+
+    to{ transform:rotate(360deg); }
+
+}
+
+@keyframes mythSunPulse{
+
+    0%,100%{ filter:brightness(1); }
+    50%{ filter:brightness(1.3); }
+
+}
+
+@keyframes mythOrbit{
+
+    from{ transform:rotate(0deg) translateX(50px) rotate(0deg); }
+    to{ transform:rotate(360deg) translateX(50px) rotate(-360deg); }
+
+}
+
+.myth-mising-line{
+
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-size:16px;
+
+    color:var(--myth-gold);
+
+    margin-bottom:12px;
+
+}
+
+/* ===============================
+   Do:ni (Tani) — arrival
+=============================== */
+
+.myth-arrival{
+
+    position:relative;
+
+    text-align:center;
+
+}
+
+.myth-arrival .myth-card{
+
+    border-color:rgba(255,255,255,.28);
+
+    animation:mythArrivalGlow 4.5s ease-in-out infinite, mythArrivalIn 1.4s ease both;
+
+}
+
+@keyframes mythArrivalIn{
+
+    from{ opacity:0; transform:translateY(24px) scale(.96); }
+    to{ opacity:1; transform:translateY(0) scale(1); }
+
+}
+
+@keyframes mythArrivalGlow{
+
+    0%,100%{
+
+        box-shadow:0 30px 60px -30px rgba(0,0,0,.7), 0 0 0 rgba(255,255,255,0);
+
+    }
+
+    50%{
+
+        box-shadow:0 30px 60px -30px rgba(0,0,0,.7), 0 0 44px 6px rgba(255,255,255,.22);
+
+    }
+
+}
+
+.myth-arrival h3{
+
+    font-size:30px;
+
+}
+
+.myth-arrival .myth-tag{
+
+    color:var(--myth-text);
+
+}
+
+/* ===============================
+   Ending
+=============================== */
+
+.myth-ending{
+
+    position:relative;
+
+    text-align:center;
+
+    margin-top:140px;
+
+    padding-top:60px;
+
+}
+
+.myth-ending-title{
+
+    font-family:'Playfair Display',serif;
+    font-size:34px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+
+    background:linear-gradient(100deg,
+        var(--myth-text-dim) 30%,
+        #fff 45%,
+        var(--myth-gold) 50%,
+        var(--myth-text-dim) 65%);
+
+    background-size:220% auto;
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+
+    animation:mythShimmer 4.5s linear infinite;
+
+}
+
+@keyframes mythShimmer{
+
+    to{ background-position:-220% 0; }
+
+}
+
+.myth-ending-sub{
+
+    margin-top:12px;
+
+    font-size:15px;
+    letter-spacing:.05em;
+    color:var(--myth-text-dim);
+    font-style:italic;
+
+}
+
+.myth-particles{
+
+    position:absolute;
+    inset:-40px 0 0;
+
+    pointer-events:none;
+
+}
+
+.myth-particles span{
+
+    position:absolute;
+    bottom:0;
+
+    width:3px;
+    height:3px;
+    border-radius:50%;
+
+    background:var(--myth-gold);
+    opacity:0;
+
+    animation:mythFloat linear infinite;
+
+}
+
+@keyframes mythFloat{
+
+    0%{ opacity:0; transform:translateY(0); }
+    15%{ opacity:.8; }
+    100%{ opacity:0; transform:translateY(-160px); }
+
+}
+
+/* ===============================
+   Responsive
+=============================== */
+
+@media(max-width:950px){
+
+    .myth-section{ padding:100px 0 120px; }
+
+    .myth-intro h2{ font-size:34px; }
+
+    .myth-timeline{
+
+        display:flex;
+        flex-direction:column;
+
+        padding:10px 16px;
+        gap:44px;
+
+        min-width:0;
+
+    }
+
+    .myth-timeline-wrap{
+
+        overflow:visible;
+
+    }
+
+    .myth-thread-line{
+
+        left:50%;
+        top:0;
+        bottom:0;
+        right:auto;
+
+        width:1px;
+        height:auto;
+
+        background:linear-gradient(180deg,
+            transparent 0%,
+            var(--myth-thread) 6%,
+            var(--myth-thread) 94%,
+            transparent 100%);
+
+    }
+
+    .myth-node,
+    .myth-node--feature,
+    .myth-node--pedong{
+
+        width:100%;
+        max-width:320px;
+        margin:0 auto;
+
+    }
+
+    .myth-branches{
+
+        grid-template-columns:1fr;
+        max-width:340px;
+
+    }
+
+    .myth-fork{ display:none; }
+
+}
