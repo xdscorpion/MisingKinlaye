@@ -584,7 +584,7 @@
 }
 
 /* ===============================
-   Pédong — rain + mist
+   Pédong — Earth Mother / Rain
 =============================== */
 
 .myth-node--pedong{
@@ -592,6 +592,9 @@
     width:300px;
 
 }
+
+
+/* Earthly background */
 
 .myth-rain{
 
@@ -601,52 +604,179 @@
     height:150px;
 
     border-radius:14px;
+
     overflow:hidden;
 
     margin-bottom:20px;
 
-    background:linear-gradient(180deg,#151519,#0b0b0e);
+    background:
+        radial-gradient(
+            circle at 50% 120%,
+            rgba(50,90,50,.5),
+            transparent 55%
+        ),
+        linear-gradient(
+            180deg,
+            #101820 0%,
+            #16251b 55%,
+            #0b0f0c 100%
+        );
+
+    box-shadow:
+        inset 0 0 40px rgba(0,0,0,.7);
 
 }
+
+
+/* Blue rain drops */
 
 .myth-rain span{
 
     position:absolute;
-    top:-20%;
 
-    width:1px;
-    height:22px;
+    top:-30%;
 
-    background:linear-gradient(180deg, transparent, rgba(201,164,107,.55));
+    width:2px;
 
-    animation:mythFall linear infinite;
+    height:35px;
+
+    background:linear-gradient(
+        180deg,
+        transparent,
+        rgba(80,170,255,.95)
+    );
+
+    box-shadow:
+        0 0 8px rgba(80,170,255,.7);
+
+    animation:mythBlueRain linear infinite;
 
 }
 
-@keyframes mythFall{
 
-    to{ transform:translateY(180px); }
+/* Falling rain */
+
+@keyframes mythBlueRain{
+
+    0%{
+
+        transform:translateY(0);
+
+        opacity:0;
+
+    }
+
+    20%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:translateY(230px);
+
+        opacity:0;
+
+    }
 
 }
+
+
+/* Earth mist */
 
 .myth-mist{
 
     position:absolute;
+
     inset:0;
 
-    background:radial-gradient(ellipse at 50% 100%, rgba(255,255,255,.08), transparent 70%);
 
-    animation:mythMistDrift 8s ease-in-out infinite;
+    background:
+
+        radial-gradient(
+            ellipse at bottom,
+            rgba(120,160,120,.25),
+            transparent 65%
+        );
+
+
+    animation:
+        mythEarthMist 10s ease-in-out infinite;
 
 }
 
-@keyframes mythMistDrift{
 
-    0%,100%{ opacity:.5; transform:translateX(0); }
-    50%{ opacity:.9; transform:translateX(10px); }
+@keyframes mythEarthMist{
+
+
+    0%,100%{
+
+        opacity:.4;
+
+        transform:
+        translateX(-10px)
+        translateY(5px);
+
+    }
+
+
+    50%{
+
+        opacity:.8;
+
+        transform:
+        translateX(10px)
+        translateY(-5px);
+
+    }
 
 }
 
+
+/* Soft lightning-like atmosphere */
+
+.myth-rain::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+
+    background:
+
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(80,170,255,.15),
+            transparent 55%
+        );
+
+
+    animation:
+        mythRainGlow 6s ease-in-out infinite;
+
+}
+
+
+@keyframes mythRainGlow{
+
+
+    0%,100%{
+
+        opacity:.3;
+
+    }
+
+
+    50%{
+
+        opacity:.8;
+
+    }
+
+}
 /* ===============================
    Fork after Pédong
 =============================== */
