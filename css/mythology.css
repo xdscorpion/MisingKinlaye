@@ -1001,3 +1001,66 @@
     .myth-fork{ display:none; }
 
 }
+
+
+/* MOBILE FIXES */
+
+@media (max-width: 768px) {
+
+    .myth-timeline {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 2rem;
+        overflow: visible;
+    }
+
+    .myth-thread-line {
+        left: 20px;
+        width: 2px;
+        height: 100%;
+        top: 0;
+    }
+
+    .myth-node {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 50px;
+    }
+
+    .myth-card {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .myth-figure img {
+        width: 100%;
+        max-width: 300px;
+        margin: auto;
+        display: block;
+    }
+
+    .myth-branches {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .myth-fork {
+        display: none;
+    }
+
+    .myth-sedi-pair {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .myth-celestial {
+        transform: scale(.8);
+    }
+
+    .myth-ending {
+        padding: 3rem 1rem;
+    }
+
+}
