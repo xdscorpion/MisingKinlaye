@@ -1,0 +1,389 @@
+/* ==========================================
+   MisingKinlaye — Genealogy Tree Engine
+   Single shared stylesheet for every clan's
+   genealogy tree. Do not duplicate these
+   rules in per-clan stylesheets.
+
+   Any clan may retune spacing by overriding
+   the custom properties below, scoped to its
+   own page class, e.g.:
+
+     .pao-page{
+         --gt-branch-gap: 50px;
+     }
+
+   No page-specific selectors, hardcoded
+   offsets, or transform hacks belong in this
+   file or in any clan stylesheet — the engine
+   must render correctly for any tree shape
+   (linear or branching, any depth, any width)
+   using only these tokens.
+========================================== */
+
+:root{
+
+    /* Node sizing */
+    --gt-node-width:210px;
+    --gt-node-width-l2:185px;
+    --gt-node-width-l3:165px;
+
+    --gt-node-font:17px;
+    --gt-node-font-l2:16px;
+    --gt-node-font-l3:15px;
+
+    --gt-node-padding:16px 22px;
+
+    /* Root / final / highlighted accents */
+    --gt-accent:var(--red);
+    --gt-line:rgba(217,4,41,.35);
+
+    /* Branch geometry */
+    --gt-branch-gap:30px;
+    --gt-branch-gap-l2:20px;
+    --gt-connector-height:28px;
+
+    /* Vertical rhythm */
+    --gt-gap-y:8px;
+}
+
+/* ===============================
+   Scroll Wrapper
+   Every tree lives inside this so
+   wide trees scroll horizontally
+   instead of clipping or breaking
+   the page layout.
+================================ */
+
+.genealogy-wrapper{
+
+    width:100%;
+    overflow-x:auto;
+    overflow-y:visible;
+    -webkit-overflow-scrolling:touch;
+
+    /* Room so hover/scale states never clip */
+    padding:4px 4px 30px;
+
+}
+
+/* ===============================
+   Tree Root Container
+================================ */
+
+.genealogy-tree{
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    margin:40px auto 0;
+    width:max-content;
+    min-width:100%;
+
+}
+
+/* ===============================
+   Nodes
+================================ */
+
+.genealogy-node{
+
+    width:var(--gt-node-width);
+    padding:var(--gt-node-padding);
+    text-align:center;
+
+    background:#FFFFFF;
+    border:1px solid #ECECEC;
+    border-radius:14px;
+
+    font-family:'Inter',sans-serif;
+    font-size:var(--gt-node-font);
+    color:var(--black);
+
+    box-shadow:0 10px 30px rgba(0,0,0,.04);
+    transition:.35s ease;
+
+    flex-shrink:0;
+
+    opacity:0;
+    animation:gtNodeAppear .6s ease forwards;
+}
+
+.genealogy-node:hover{
+
+    transform:translateY(-5px);
+    border-color:var(--gt-accent);
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+}
+
+.genealogy-node.root{
+
+    font-family:'Playfair Display',serif;
+    font-size:20px;
+
+}
+
+.genealogy-node.final{
+
+    border:2px solid var(--gt-accent);
+    font-family:'Playfair Display',serif;
+    font-size:20px;
+    font-weight:700;
+
+}
+
+.genealogy-node.highlighted{
+
+    background:var(--gt-accent);
+    color:#fff;
+    border-color:var(--gt-accent);
+    transform:scale(1.08);
+    box-shadow:0 10px 30px rgba(217,4,41,.18);
+
+}
+
+/* Stagger each node's entrance by its position in the
+   DOM automatically — no fixed list of nth-child rules. */
+.genealogy-tree .genealogy-node{
+    animation-delay:calc(var(--gt-i, 0) * 70ms);
+}
+
+@keyframes gtNodeAppear{
+    from{ opacity:0; transform:translateY(12px); }
+    to{ opacity:1; transform:translateY(0); }
+}
+
+/* ===============================
+   Connecting Arrow (linear chain)
+================================ */
+
+.genealogy-tree .arrow{
+
+    font-size:28px;
+    color:var(--gt-accent);
+    line-height:1;
+    margin:var(--gt-gap-y) 0;
+    font-family:'Inter',sans-serif;
+
+}
+
+/* Dotted connector: marks a link where the names of the
+   intervening ancestors are unknown or unrecorded. */
+.genealogy-tree .arrow.dotted{
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin:4px 0;
+    font-size:inherit;
+
+}
+
+.arrow.dotted .dotted-line{
+
+    width:0;
+    height:38px;
+    border-left:2px dashed rgba(217,4,41,.5);
+
+}
+
+.arrow.dotted .arrow-head{
+
+    font-size:24px;
+    color:rgba(217,4,41,.6);
+    line-height:1;
+    margin-top:-6px;
+
+}
+
+/* ==========================================
+   BRANCH SYSTEM
+   Recursive: a .branch-node may itself
+   contain another .branch-wrapper, to any
+   depth, with no additional CSS required.
+========================================== */
+
+.branch-wrapper{
+
+    position:relative;
+    padding-top:var(--gt-connector-height);
+
+}
+
+/* Stem connecting the parent node down to
+   the shared horizontal branch bar */
+.branch-wrapper::before{
+
+    content:"";
+    position:absolute;
+    top:0;
+    left:50%;
+    width:2px;
+    height:var(--gt-connector-height);
+    background:var(--gt-line);
+    transform:translateX(-50%);
+
+}
+
+.branch-items{
+
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+
+}
+
+.branch-node{
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    position:relative;
+
+    margin:0 var(--gt-branch-gap);
+
+}
+
+.branch-items > .branch-node:first-child{ margin-left:0; }
+.branch-items > .branch-node:last-child{ margin-right:0; }
+
+/* Branch connectors */
+
+.branch-items > .branch-node::before{
+
+    content:"";
+    position:absolute;
+    top:0;
+    left:calc(-1 * var(--gt-branch-gap));
+    right:50%;
+
+    border-top:2px solid var(--gt-line);
+}
+
+.branch-items > .branch-node::after{
+
+    content:"";
+    position:absolute;
+    top:0;
+    left:50%;
+    right:calc(-1 * var(--gt-branch-gap));
+
+    border-top:2px solid var(--gt-line);
+}
+
+.branch-items > .branch-node:first-child::before{
+    content:none;
+}
+
+.branch-items > .branch-node:last-child::after{
+    content:none;
+}
+
+/* SINGLE VERTICAL STEM PER CHILD */
+
+.branch-items > .branch-node > .genealogy-node:first-child{
+    margin-top:var(--gt-connector-height);
+}
+
+.branch-items > .branch-node > .genealogy-node:first-child::before{
+    content:"";
+    position:absolute;
+    top:calc(-1 * var(--gt-connector-height));
+    left:50%;
+    width:2px;
+    height:var(--gt-connector-height);
+    background:var(--gt-line);
+    transform:translateX(-50%);
+}
+
+/* A single child gets one straight stem instead of a
+   curved pair, and needs no siblings to align to */
+.branch-items > .branch-node:only-child::before{
+
+    content:"";
+    position:absolute;
+    top:0;
+    left:50%;
+    width:2px;
+    height:var(--gt-connector-height);
+    background:var(--gt-line);
+    border:none;
+    border-radius:0;
+    transform:translateX(-50%);
+
+}
+
+.branch-items > .branch-node:only-child::after{ content:none; }
+
+/* ===============================
+   Nested generations shrink so
+   deep trees stay compact — this
+   is generation-based (by nesting
+   depth), never by fixed index.
+================================ */
+
+.branch-node .genealogy-node{
+    width:var(--gt-node-width-l2);
+    font-size:var(--gt-node-font-l2);
+}
+
+.branch-node .branch-items{
+    --gt-branch-gap:var(--gt-branch-gap-l2);
+}
+
+.branch-node .branch-node .genealogy-node{
+    width:var(--gt-node-width-l3);
+    font-size:var(--gt-node-font-l3);
+}
+
+.branch-node .genealogy-node.final,
+.branch-node .genealogy-node.highlighted{
+    font-family:'Playfair Display',serif;
+    font-weight:700;
+}
+
+/* ===============================
+   Responsive
+================================ */
+
+@media (max-width:950px){
+
+    :root{
+        --gt-node-width:170px;
+        --gt-node-width-l2:155px;
+        --gt-node-width-l3:140px;
+        --gt-node-font:15px;
+        --gt-node-font-l2:14px;
+        --gt-node-font-l3:13px;
+        --gt-branch-gap:18px;
+        --gt-branch-gap-l2:12px;
+    }
+
+    .genealogy-node.final{ font-size:17px; }
+
+}
+
+@media (max-width:600px){
+
+    :root{
+        --gt-node-width:150px;
+        --gt-node-width-l2:140px;
+        --gt-node-width-l3:125px;
+        --gt-node-padding:14px 16px;
+    }
+
+    .genealogy-node.root{ font-size:17px; }
+    .genealogy-node.final{ font-size:16px; }
+
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion:reduce){
+
+    .genealogy-node{
+        animation:none;
+        opacity:1;
+    }
+
+}

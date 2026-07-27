@@ -1,0 +1,18 @@
+/* ==========================================
+   MisingKinlaye — Design Tokens
+   Shared across every page. Linked before
+   style.css (and before any clan stylesheet)
+   so the tokens are available everywhere.
+========================================== */
+
+:root{
+
+    --red:#D90429;
+    --black:#111111;
+    --white:#FFFFFF;
+    --grey:#6B7280;
+    --light:#F7F7F7;
+
+    --shadow:0 15px 40px rgba(0,0,0,.08);
+
+}

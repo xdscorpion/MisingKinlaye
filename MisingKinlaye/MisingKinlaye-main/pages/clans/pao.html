@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pao: Opín | MisingKinlaye</title>
+<meta name="description" content="Explore the genealogy and origins of the Pao Opín clan.">
+<link rel="icon" href="/images/logo/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/variables.css">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/genealogy-tree.css">
+<link rel="stylesheet" href="/css/pao.css">
+</head>
+<body>
+<div class="left-pattern"></div>
+<div class="right-pattern"></div>
+
+<header>
+<div class="container">
+<a href="/" class="brand">
+<img src="/images/logo/logo.png" alt="MisingKinlaye Logo">
+<h1><span class="black">MisingKin</span><span class="red">laye</span></h1>
+</a>
+<nav id="site-nav">
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/pages/clan-genealogy.html">Clan Genealogy</a></li>
+<li><a href="/pages/ngoluk-donam-tinam.html">Ngoluk Donam Tí:nam</a></li>
+<li><a href="/pages/ngoluk-genam.html">Ngoluk Génam</a></li>
+<li><a href="/pages/mythology.html">Mythology</a></li>
+<li><a href="/pages/about-misingkinlaye.html">About</a></li>
+</ul>
+</nav>
+<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+    <span></span><span></span><span></span>
+</button>
+</div>
+</header>
+
+<section class="pao-page">
+<div class="container">
+<h1>Pao Opín</h1>
+
+<div class="pao-intro">
+<p><strong>Pao</strong> is one of the clans of the Mising tribe, with a distinct genealogical lineage that forms an important part of Mising ancestral history. According to the genealogical traditions and lineage records associated with the clan, the Pao clan is believed to have descended from the <strong>Minyong group.</strong></p>
+</div>
+
+<h2>Genealogy of Pao Opín</h2>
+
+<div class="genealogy-layout">
+
+<div class="genealogy-wrapper">
+<div class="genealogy-tree" id="genealogy-root" role="img" aria-label="Genealogy chain from Do:ni (Tani) to Pao, branching into Matung and Majong"></div>
+</div>
+
+<div class="dotted-note">
+<p>
+    In the original document containing the Pao genealogy, the names of the ancestors preceding Do:lo had been forgotten or omitted. However, the owner of this website independently researched and connected the genealogical records of different clans to trace and identify the names of the ancestors who came before Do:lo.
+</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<img src="/images/logo/logo.png" alt="logo">
+<h3><span class="black">MisingKin</span><span class="red">laye</span></h3>
+<p>Preserving the history, language, culture and identity of the Mising people.</p>
+<small>© 2026 MisingKinlaye. Developed by members of Takam Mising Sí:sang Kébang.</small>
+</div>
+</footer>
+
+<script src="/js/genealogy-engine.js"></script>
+<script src="/js/data/pao.genealogy.js"></script>
+<script>MisingGenealogy.render("genealogy-root", window.MISING_GENEALOGY_PAO);</script>
+<script src="/js/menu.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

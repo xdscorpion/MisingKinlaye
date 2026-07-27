@@ -1,0 +1,88 @@
+/* ==========================================
+   MisingKinlaye — Placeholder Page
+   Shared by any page whose content isn't
+   written yet, so visiting it is a normal
+   styled page instead of a blank file.
+========================================== */
+
+.placeholder-page{
+
+    padding:160px 0 140px;
+    text-align:center;
+
+}
+
+.placeholder-page h1{
+
+    font-family:'Playfair Display',serif;
+    font-size:48px;
+    margin-bottom:20px;
+
+}
+
+.placeholder-page h1::after{
+
+    content:"";
+    display:block;
+    width:80px;
+    height:3px;
+    background:var(--red);
+    margin:25px auto 0;
+
+}
+
+.placeholder-page p{
+
+    max-width:600px;
+    margin:0 auto;
+    font-family:'Inter',sans-serif;
+    font-size:18px;
+    line-height:1.8;
+    color:#555;
+
+}
+
+.placeholder-page .tag{
+
+    display:inline-block;
+    margin-bottom:25px;
+    padding:8px 20px;
+    border-radius:50px;
+    background:var(--light);
+    color:var(--red);
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:13px;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+
+}
+
+.placeholder-page .back-link{
+
+    display:inline-block;
+    margin-top:40px;
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    color:var(--red);
+    text-decoration:none;
+    border-bottom:2px solid var(--red);
+    padding-bottom:3px;
+
+}
+
+@media(max-width:600px){
+
+    .placeholder-page{
+
+        padding:120px 0 100px;
+
+    }
+
+    .placeholder-page h1{
+
+        font-size:36px;
+
+    }
+
+}

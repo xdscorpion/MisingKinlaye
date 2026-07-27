@@ -1,0 +1,751 @@
+/* ==========================================
+   Genealogy Page
+   MisingKinlaye Minimal Museum Theme
+========================================== */
+
+
+.genealogy-section{
+
+    padding:120px 0;
+
+}
+
+
+
+.genealogy-layout{
+
+    width:min(1200px,90%);
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:280px 1fr;
+
+    gap:70px;
+
+    align-items:start;
+
+}
+
+
+
+/* ===============================
+   Clan List
+================================ */
+
+
+.clan-sidebar{
+
+
+    border-right:1px solid #ECECEC;
+
+    padding-right:35px;
+
+
+}
+
+
+
+.clan-sidebar h2{
+
+
+    font-family:'Playfair Display',serif;
+
+    font-size:32px;
+
+    line-height:1.3;
+
+    margin-bottom:40px;
+
+
+}
+
+
+
+.clan-sidebar ul{
+
+
+    list-style:none;
+
+    padding:0;
+
+
+}
+
+
+
+.clan-sidebar li{
+
+
+    margin-bottom:18px;
+
+
+}
+
+
+
+.clan-sidebar a{
+
+
+    text-decoration:none;
+
+    color:#222;
+
+    font-size:18px;
+
+    transition:.3s;
+
+
+}
+
+
+
+.clan-sidebar a:hover{
+
+
+    color:#D90429;
+
+
+}
+
+
+
+
+/* Sub clans */
+
+
+.clan-sidebar li ul{
+
+
+    margin-top:15px;
+
+    margin-left:10px;
+
+    padding-left:20px;
+
+    border-left:2px solid #D90429;
+
+
+}
+
+
+
+.clan-sidebar li ul li{
+
+
+    color:#6B7280;
+
+    font-size:15px;
+
+    margin-bottom:10px;
+
+
+}
+
+
+
+
+
+
+/* ===============================
+   Main Genealogy Content
+================================ */
+
+
+.genealogy-content{
+
+
+    padding:10px 0;
+
+
+}
+
+
+
+
+.genealogy-content h1{
+
+
+    font-family:'Playfair Display',serif;
+
+    font-size:58px;
+
+    line-height:1.2;
+
+    margin-bottom:35px;
+
+
+}
+
+
+
+
+.genealogy-content h1::after{
+
+
+    content:"";
+
+    display:block;
+
+    width:70px;
+
+    height:3px;
+
+    background:#D90429;
+
+    margin-top:25px;
+
+
+}
+
+
+
+
+.genealogy-content p{
+
+
+    font-size:18px;
+
+    color:#444;
+
+    max-width:750px;
+
+    line-height:1.9;
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+/* ===============================
+   Archive Section
+================================ */
+
+
+.coming-box{
+
+
+    margin-top:60px;
+
+    padding:35px;
+
+    background:#F7F7F7;
+
+    border-radius:12px;
+
+
+}
+
+
+
+
+.coming-box h2{
+
+
+    font-family:'Playfair Display',serif;
+
+    font-size:32px;
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+.coming-box p{
+
+
+    color:#6B7280;
+
+    margin:0;
+
+
+}
+
+
+
+
+
+/* ===============================
+   Responsive
+================================ */
+
+
+@media(max-width:950px){
+
+
+    .genealogy-layout{
+
+
+        grid-template-columns:1fr;
+
+        gap:50px;
+
+
+    }
+
+
+
+    .clan-sidebar{
+
+
+        border-right:none;
+
+        border-bottom:1px solid #ECECEC;
+
+        padding-bottom:40px;
+
+
+    }
+
+
+
+    .genealogy-content h1{
+
+
+        font-size:42px;
+
+
+    }
+
+
+}
+
+/* ==========================================
+   Genealogy Page Animations
+========================================== */
+
+
+/* Initial fade animation */
+
+.genealogy-content,
+.clan-sidebar{
+
+    animation:fadeUp .8s ease forwards;
+
+}
+
+
+
+.clan-sidebar{
+
+    animation-delay:.1s;
+
+}
+
+
+
+.genealogy-content{
+
+    animation-delay:.25s;
+
+}
+
+
+
+
+
+@keyframes fadeUp{
+
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+
+}
+
+
+
+
+
+/* Clan links smooth hover */
+
+
+.clan-sidebar a{
+
+
+    position:relative;
+
+    display:inline-block;
+
+}
+
+
+
+.clan-sidebar a::after{
+
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-5px;
+
+    width:0;
+
+    height:2px;
+
+    background:#D90429;
+
+    transition:.35s ease;
+
+
+}
+
+
+
+.clan-sidebar a:hover::after{
+
+
+    width:100%;
+
+
+}
+
+
+
+
+
+/* Archive box subtle entrance */
+
+
+.coming-box{
+
+
+    animation:fadeArchive 1s ease forwards;
+
+    animation-delay:.5s;
+
+    opacity:0;
+
+
+}
+
+
+
+@keyframes fadeArchive{
+
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(15px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+
+}
+
+
+
+
+
+/* Gentle hover on archive box */
+
+
+.coming-box:hover{
+
+
+    transform:translateY(-4px);
+
+    transition:.35s ease;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+
+}
+
+
+
+
+
+/* Smooth page elements */
+
+
+.genealogy-content p{
+
+
+    transition:.3s ease;
+
+
+}
+
+
+
+.genealogy-content p:hover{
+
+
+    color:#222;
+
+
+}
+/* ==========================================
+   Minimal Genealogy Page Animation
+========================================== */
+
+
+.genealogy-content,
+.clan-sidebar {
+
+    opacity:0;
+
+    animation: subtleAppear 0.8s ease forwards;
+
+}
+
+
+.clan-sidebar {
+
+    animation-delay:0.1s;
+
+}
+
+
+.genealogy-content {
+
+    animation-delay:0.2s;
+
+}
+
+
+
+@keyframes subtleAppear {
+
+
+    from {
+
+        opacity:0;
+
+        transform:translateY(10px);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+
+}
+
+
+
+/* Clan link hover */
+
+.clan-sidebar a {
+
+    transition:0.25s ease;
+
+}
+
+
+
+.clan-sidebar a:hover {
+
+    color:#D90429;
+
+    padding-left:4px;
+
+}
+
+.genealogy-content h1,
+.clan-sidebar h2,
+.coming-box h2{
+
+    font-family:'Playfair Display', serif;
+
+}
+
+
+
+.genealogy-content p,
+.clan-sidebar a,
+.coming-box p{
+
+    font-family:'Inter', sans-serif;
+
+}
+
+/* ===============================
+   Elegant Pronunciation Player
+================================ */
+
+.term-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 10px;
+}
+
+.term-header h2 {
+    margin: 0;
+}
+
+
+/* Circular Audio Button */
+
+.audio-button {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #d90429;
+    border-radius: 50%;
+
+    background: transparent;
+    color: #d90429;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+
+/* Play Icon */
+
+.play-icon {
+    font-size: 11px;
+    margin-left: 2px;
+}
+
+
+/* Hover */
+
+.audio-button:hover {
+    background: #d90429;
+    color: #ffffff;
+
+    transform: scale(1.08);
+
+    box-shadow: 0 8px 20px rgba(217, 4, 41, 0.18);
+}
+
+
+/* When Audio Is Playing */
+
+.audio-button.playing {
+    background: #d90429;
+    color: #ffffff;
+
+    animation: audioPulse 1.5s infinite;
+}
+
+
+@keyframes audioPulse {
+
+    0% {
+        box-shadow: 0 0 0 0 rgba(217, 4, 41, 0.3);
+    }
+
+    70% {
+        box-shadow: 0 0 0 8px rgba(217, 4, 41, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(217, 4, 41, 0);
+    }
+
+}
+
+
+/* Hide Default Audio Player */
+
+.term-header audio {
+    display: none;
+}
+
+/* ===============================
+   OPÍN & ÉRANG AUDIO BOX
+================================ */
+
+.term-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+    width: 100%;
+}
+
+.term-header h2 {
+    margin: 0;
+    text-align: left;
+}
+
+.term-header audio {
+    display: none;
+}
+
+.audio-button {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 1px solid var(--red);
+    border-radius: 50%;
+
+    background: transparent;
+    color: var(--red);
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.audio-button:hover {
+    background: var(--red);
+    color: white;
+    transform: scale(1.08);
+}
+
+.audio-button.playing {
+    background: var(--red);
+    color: white;
+}
+
+.coming-box p {
+    text-align: left;
+}

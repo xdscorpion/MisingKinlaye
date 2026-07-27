@@ -1,0 +1,236 @@
+/* ==========================================
+   MisingKinlaye
+   Kepang Érang Detail Page Theme
+========================================== */
+
+
+/* ===============================
+   Clan Page Layout
+================================ */
+
+
+.kepang-page{
+
+    padding:120px 0;
+
+    animation:pageAppear .8s ease forwards;
+
+}
+
+
+
+@keyframes pageAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+
+
+/* ===============================
+   Main Heading
+================================ */
+
+
+.kepang-page h1{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:58px;
+
+    line-height:1.2;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.kepang-page h1::after{
+
+    content:"";
+
+    display:block;
+
+    width:80px;
+
+    height:3px;
+
+    background:var(--red);
+
+    margin-top:25px;
+
+}
+
+
+
+
+
+/* ===============================
+   Introduction
+================================ */
+
+
+.kepang-intro{
+
+    max-width:850px;
+
+}
+
+
+
+.kepang-intro p{
+
+    font-family:'Inter',sans-serif;
+
+    font-size:18px;
+
+    line-height:1.9;
+
+    color:#444;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.kepang-intro strong{
+
+    color:var(--black);
+
+}
+
+
+
+.kepang-intro em{
+
+    color:#666;
+
+    font-style:italic;
+
+}
+
+
+
+.variant-list{
+
+    list-style:none;
+
+    margin:0 0 25px;
+
+    padding:0;
+
+}
+
+
+
+.variant-list li{
+
+    font-family:'Inter',sans-serif;
+
+    font-size:17px;
+
+    line-height:1.8;
+
+    color:#444;
+
+    padding-left:22px;
+
+    position:relative;
+
+    margin-bottom:12px;
+
+}
+
+
+
+.variant-list li::before{
+
+    content:"—";
+
+    position:absolute;
+
+    left:0;
+
+    color:var(--red);
+
+    font-weight:600;
+
+}
+
+
+
+.variant-list strong{
+
+    color:var(--black);
+
+}
+
+
+
+
+
+/* ===============================
+   Genealogy Heading
+================================ */
+
+
+.kepang-page h2{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:42px;
+
+    margin-top:100px;
+
+    margin-bottom:50px;
+
+}
+
+
+
+
+
+/* Genealogy tree, node, arrow and branch styling now lives in the
+   shared /css/genealogy-tree.css engine — this file only keeps
+   Kepang-specific page content below. */
+
+@media(max-width:950px){
+
+    .kepang-page{
+
+        padding:80px 0;
+
+    }
+
+    .kepang-page h1{
+
+        font-size:42px;
+
+    }
+
+    .kepang-page h2{
+
+        font-size:32px;
+
+    }
+
+}

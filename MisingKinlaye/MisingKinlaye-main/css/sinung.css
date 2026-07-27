@@ -1,0 +1,254 @@
+/* ==========================================
+   MisingKinlaye
+   Sinung Clan Detail Page Theme
+========================================== */
+
+
+/* ===============================
+   Clan Page Layout
+================================ */
+
+.sinung-page {
+    padding: 120px 0;
+    animation: pageAppear .8s ease forwards;
+}
+
+@keyframes pageAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ===============================
+   Main Heading
+================================ */
+
+.sinung-page h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 58px;
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+.sinung-page h1::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: var(--red);
+    margin-top: 25px;
+}
+
+
+/* ===============================
+   Introduction
+================================ */
+
+.sinung-intro {
+    max-width: 850px;
+}
+
+.sinung-intro p {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    line-height: 1.9;
+    color: #444;
+    margin-bottom: 25px;
+}
+
+.sinung-intro strong {
+    color: var(--black);
+}
+
+.sinung-intro em {
+    color: #666;
+    font-style: italic;
+}
+
+
+/* ===============================
+   Note Block
+   (e.g. Bori subgroup clarification)
+================================ */
+
+.note-block {
+    background: rgba(217, 4, 41, .04);
+    border-left: 3px solid var(--red);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 0 0 25px;
+}
+
+.note-block p {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 0;
+}
+
+.note-block strong {
+    color: var(--red);
+}
+
+
+/* ===============================
+   Variant List
+================================ */
+
+.variant-list {
+    list-style: none;
+    margin: 0 0 25px;
+    padding: 0;
+}
+
+.variant-list li {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #444;
+    padding-left: 22px;
+    position: relative;
+    margin-bottom: 12px;
+}
+
+.variant-list li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--red);
+    font-weight: 600;
+}
+
+.variant-list strong {
+    color: var(--black);
+}
+
+
+/* ===============================
+   Genealogy Heading
+================================ */
+
+.sinung-page h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+
+/* ===============================
+   Genealogy Layout
+   (tree, then note below)
+================================ */
+
+.genealogy-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+
+/* Genealogy tree, node, arrow and branch styling now lives in the
+   shared /css/genealogy-tree.css engine — this file only keeps
+   Sinung-specific layout (below) and the dotted-line note box. */
+
+
+/* ==========================================
+   GENEALOGY NOTE (side box)
+   Explains the dotted connector
+========================================== */
+
+.genealogy-note {
+    width: 100%;
+    max-width: 480px;
+    background: #fff;
+    border: 1px dashed rgba(217, 4, 41, .4);
+    border-radius: 14px;
+    padding: 26px 24px;
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+
+.genealogy-note h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    color: var(--red);
+    margin-bottom: 14px;
+}
+
+.genealogy-note p {
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   MOBILE RESPONSIVE
+========================================== */
+
+@media (max-width: 950px) {
+
+    .sinung-page {
+
+        padding: 80px 0;
+
+    }
+
+
+    .sinung-page h1 {
+
+        font-size: 42px;
+
+    }
+
+
+    .sinung-page h2 {
+
+        font-size: 32px;
+
+    }
+
+}
+
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+
+    .sinung-page {
+
+        padding: 60px 0;
+
+    }
+
+
+    .sinung-page h1 {
+
+        font-size: 34px;
+
+    }
+
+
+    .sinung-page h2 {
+
+        font-size: 28px;
+
+        margin-top: 70px;
+
+    }
+
+}

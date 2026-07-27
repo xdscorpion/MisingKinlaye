@@ -1,0 +1,390 @@
+/* ==========================================
+   MisingKinlaye
+   Clan Detail Page Theme
+========================================== */
+
+
+/* ===============================
+   Clan Page Layout
+================================ */
+
+
+.dole-page{
+
+    padding:120px 0;
+
+    animation:pageAppear .8s ease forwards;
+
+}
+
+
+
+@keyframes pageAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+
+/* ===============================
+   Main Heading
+================================ */
+
+
+.dole-page h1{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:58px;
+
+    line-height:1.2;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.dole-page h1::after{
+
+    content:"";
+
+    display:block;
+
+    width:80px;
+
+    height:3px;
+
+    background:var(--red);
+
+    margin-top:25px;
+
+}
+
+
+
+
+
+/* ===============================
+   Introduction
+================================ */
+
+
+.dole-intro{
+
+    max-width:850px;
+
+}
+
+
+
+.dole-intro p{
+
+    font-family:'Inter',sans-serif;
+
+    font-size:18px;
+
+    line-height:1.9;
+
+    color:#444;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.dole-intro strong{
+
+    color:var(--black);
+
+}
+
+
+
+
+
+/* ===============================
+   Genealogy Heading
+================================ */
+
+
+.dole-page h2{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:42px;
+
+    margin-top:100px;
+
+    margin-bottom:50px;
+
+}
+
+
+
+
+
+
+
+/* Genealogy tree, node, arrow and animation styling now lives in
+   the shared /css/genealogy-tree.css engine. Dole's chain uses a
+   slightly wider node than the engine default — tuned here via
+   the engine's own custom properties instead of duplicating its
+   CSS. */
+
+.dole-page{
+    --gt-node-width:230px;
+}
+
+@media (max-width:950px){
+    .dole-page{
+        --gt-node-width:180px;
+    }
+}
+
+/* ===============================
+   Research Note
+================================ */
+
+
+.research-note{
+
+    margin-top:90px;
+
+    padding:35px;
+
+    background:var(--light);
+
+    border-radius:12px;
+
+    border:1px solid #ECECEC;
+
+}
+
+
+
+.research-note p{
+
+    font-family:'Inter',sans-serif;
+
+    color:#666;
+
+    line-height:1.8;
+
+    font-size:16px;
+
+}
+
+
+.historical-record{
+
+    margin:120px 0;
+
+}
+
+
+
+.record-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:80px;
+
+    align-items:center;
+
+}
+
+
+
+.record-image{
+
+    overflow:hidden;
+
+    border-radius:18px;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.08);
+
+    transition:.45s;
+
+}
+
+
+
+.record-image img{
+
+    width:100%;
+
+    display:block;
+
+    transition:.6s;
+
+}
+
+
+
+.record-image:hover img{
+
+    transform:scale(1.04);
+
+}
+
+
+
+.record-content h2{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:42px;
+
+    margin:15px 0 25px;
+
+}
+
+
+
+.record-content p{
+
+    color:#555;
+
+    line-height:1.9;
+
+    font-size:17px;
+
+}
+
+
+
+.record-tag{
+
+    display:inline-block;
+
+    padding:8px 18px;
+
+    border-radius:50px;
+
+    background:var(--light);
+
+    color:var(--red);
+
+    font-weight:600;
+
+    font-size:14px;
+
+}
+
+
+
+.record-info{
+
+    display:flex;
+
+    gap:50px;
+
+    margin-top:35px;
+
+}
+
+
+
+.record-info h4{
+
+    font-family:'Playfair Display',serif;
+
+    margin-bottom:6px;
+
+}
+
+
+
+.record-info span{
+
+    color:#666;
+
+}
+
+
+
+/* Hover */
+
+.record-image:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 30px 60px rgba(0,0,0,.12);
+
+}
+
+
+
+/* Mobile */
+
+@media(max-width:900px){
+
+.record-grid{
+
+grid-template-columns:1fr;
+
+gap:45px;
+
+}
+
+}
+
+/* ===============================
+Clan Image
+=============================== */
+
+.dole-image{
+
+    max-width:900px;
+    margin:80px auto;
+    text-align:center;
+
+}
+
+.dole-image img{
+
+    width:100%;
+    border-radius:18px;
+    border:1px solid #ECECEC;
+    box-shadow:0 18px 45px rgba(0,0,0,.08);
+    transition:.45s ease;
+
+}
+
+.dole-image img:hover{
+
+    transform:translateY(-8px) scale(1.02);
+    box-shadow:0 28px 60px rgba(0,0,0,.12);
+
+}
+
+.image-caption{
+
+    margin-top:18px;
+    font-size:15px;
+    color:#777;
+    font-style:italic;
+
+}
+
