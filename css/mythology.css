@@ -937,94 +937,148 @@
 
 /* ===============================
    Responsive
+   Desktop: horizontal timeline
+   Mobile: horizontal swipe timeline
 =============================== */
 
 @media(max-width:950px){
 
-    .myth-section{ padding:100px 0 120px; }
+    .myth-section{
+        padding:100px 0 120px;
+    }
 
-    .myth-intro h2{ font-size:34px; }
+
+    .myth-intro h2{
+        font-size:34px;
+    }
+
+
+    /*
+       Keep timeline horizontal
+       Enable swipe scrolling on mobile
+    */
+
+    .myth-timeline-wrap{
+
+        width:100%;
+
+        overflow-x:auto;
+        overflow-y:hidden;
+
+        -webkit-overflow-scrolling:touch;
+
+        scroll-behavior:smooth;
+
+        padding-bottom:30px;
+
+    }
+
+
+    .myth-timeline-wrap::-webkit-scrollbar{
+
+        height:5px;
+
+    }
+
+
+    .myth-timeline-wrap::-webkit-scrollbar-thumb{
+
+        background:var(--myth-thread);
+        border-radius:99px;
+
+    }
+
 
     .myth-timeline{
 
         display:flex;
-        flex-direction:column;
 
-        padding:10px 16px;
-        gap:44px;
+        flex-direction:row;
 
-        min-width:0;
+        align-items:center;
 
-    }
+        gap:40px;
 
-    .myth-timeline-wrap{
+        padding:40px 30px;
 
-        overflow:visible;
+        width:max-content;
 
-    }
-
-    .myth-thread-line{
-
-        left:50%;
-        top:0;
-        bottom:0;
-        right:auto;
-
-        width:1px;
-        height:auto;
-
-        background:linear-gradient(180deg,
-            transparent 0%,
-            var(--myth-thread) 6%,
-            var(--myth-thread) 94%,
-            transparent 100%);
+        min-width:max-content;
 
     }
+
+
+    /*
+       Keep every mythology card
+       as a horizontal step
+    */
 
     .myth-node,
     .myth-node--feature,
     .myth-node--pedong{
 
-        width:100%;
-        max-width:320px;
+        flex:0 0 auto;
+
+        width:280px;
+
+        max-width:280px;
+
+        margin:0;
+
+    }
+
+
+    /*
+       Horizontal connecting line
+    */
+
+    .myth-thread-line{
+
+        top:50%;
+
+        left:0;
+        right:0;
+
+        width:auto;
+        height:1px;
+
+        bottom:auto;
+
+        background:linear-gradient(
+            90deg,
+            transparent,
+            var(--myth-thread),
+            transparent
+        );
+
+    }
+
+
+    /*
+       Keep branches horizontal
+    */
+
+    .myth-branches{
+
+        display:grid;
+
+        grid-template-columns:repeat(2,280px);
+
+        gap:40px;
+
+        width:max-content;
+
+        max-width:none;
+
         margin:0 auto;
 
     }
 
-    .myth-branches{
 
-        grid-template-columns:1fr;
-        max-width:340px;
+    .myth-fork{
+
+        display:block;
 
     }
 
-    .myth-fork{ display:none; }
-
-}
-
-
-* {
-    opacity: 1 !important;
-    visibility: visible !important;
-}
-
-.myth-sky,
-.left-pattern,
-.right-pattern {
-    display: none !important;
-}
-
-body,
-main,
-section,
-.myth-page,
-.mythology-section,
-.myth-timeline-wrap,
-.myth-timeline {
-    display: block !important;
-    height: auto !important;
-    min-height: auto !important;
-    overflow: visible !important;
-    position: static !important;
-    transform: none !important;
 }
