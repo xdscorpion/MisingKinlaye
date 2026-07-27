@@ -1003,3 +1003,28 @@
 }
 
 
+* {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.myth-sky,
+.left-pattern,
+.right-pattern {
+    display: none !important;
+}
+
+body,
+main,
+section,
+.myth-page,
+.mythology-section,
+.myth-timeline-wrap,
+.myth-timeline {
+    display: block !important;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    position: static !important;
+    transform: none !important;
+}
