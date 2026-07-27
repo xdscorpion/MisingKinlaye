@@ -1064,3 +1064,28 @@
     }
 
 }
+
+@media (max-width: 768px) {
+
+    .myth-timeline,
+    .myth-timeline-wrap {
+        all: unset;
+        display: block;
+    }
+
+    .myth-node,
+    .myth-card {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .myth-fork {
+        display: none;
+    }
+
+    .myth-branches {
+        display: block;
+    }
+}
